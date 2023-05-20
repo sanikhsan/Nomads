@@ -15,12 +15,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('landing.home');
+})->name('landing');
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
+
+Route::get('/checkout', function () {
+    return view('landing.checkout-page');
+})->name('checkout');
+
+Route::get('/detail', function () {
+    return view('landing.detail-page');
+})->name('detail');
+
+Route::get('/success', function () {
+    return view('landing.success-checkout-page');
+})->name('success');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
