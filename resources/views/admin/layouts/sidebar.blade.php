@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="{{asset('admin/images/logo/logo.png')}}" alt="Logo" srcset=""></a>
+                    <a href="index.html"><img src="{{asset('landing/images/logo@2x.png')}}" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -61,10 +61,10 @@
                     class="sidebar-item">
                     <form action="{{route('logout')}}" method="POST">
                         @csrf
-                        <button class='sidebar-link' style="border-width: 0; background-color: #fff">
+                        <a href="javascript:;" onclick="parentNode.submit();" class='sidebar-link'>
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Keluar</span>
-                        </button>
+                        </a>
                     </form>
                 </li>
             </ul>

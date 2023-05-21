@@ -48,10 +48,10 @@
     <script src="{{asset('admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
     
-<script src="{{asset('admin/vendors/apexcharts/apexcharts.js')}}"></script>
-<script src="{{asset('admin/js/pages/dashboard.js')}}"></script>
+    <script src="{{asset('admin/vendors/apexcharts/apexcharts.js')}}"></script>
+    <script src="{{asset('admin/js/pages/dashboard.js')}}"></script>
 
-<script src="{{asset('admin/js/mazer.js')}}"></script>
+    <script src="{{asset('admin/js/mazer.js')}}"></script>
 </body>
 
 </html>
