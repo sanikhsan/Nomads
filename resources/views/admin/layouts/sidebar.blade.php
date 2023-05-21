@@ -58,11 +58,14 @@
                 </li>
                 
                 <li
-                    class="sidebar-item  ">
-                    <a href="application-email.html" class='sidebar-link'>
-                        <i class="bi bi-box-arrow-right"></i>
-                        <span>Keluar</span>
-                    </a>
+                    class="sidebar-item">
+                    <form action="{{route('logout')}}" method="POST">
+                        @csrf
+                        <button class='sidebar-link' style="border-width: 0; background-color: #fff">
+                            <i class="bi bi-box-arrow-right"></i>
+                            <span>Keluar</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>

@@ -1,5 +1,7 @@
 @extends('landing.layouts.app')
 
+@section('title', '- Checkout')
+
 @section('landing-section')
 <section class="section-details-header"></section>
     <section class="section-details-content">
@@ -215,3 +217,21 @@
         </div>
     </section>
 @endsection
+
+@push('addon-style')
+<link rel="stylesheet" href="{{asset('landing/libraries/gijgo/css/gijgo.min.css')}}" />
+@endpush
+
+@push('addon-script')
+<script src="{{asset('landing/libraries/gijgo/js/gijgo.min.js')}}"></script>
+<script>
+$(document).ready(function() {
+  $('.datepicker').datepicker({
+  uiLibrary: 'bootstrap4',
+  icons: {
+      rightIcon: '<img src="{{asset('landing/images/ic_doe.png')}}" alt="" />'
+  }
+  });
+});
+</script>
+@endpush

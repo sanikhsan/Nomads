@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\EnsureRolesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RolesController;
+use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +21,7 @@ Route::get('/', function () {
     return view('landing.home');
 })->name('landing');
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard');
+Route::get('/roles', [EnsureRolesController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/checkout', function () {
     return view('landing.checkout-page');
@@ -33,6 +34,18 @@ Route::get('/detail', function () {
 Route::get('/success', function () {
     return view('landing.success-checkout-page');
 })->name('success');
+
+Route::prefix('admin')->middleware(['auth', 'EnsureUserRole:admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+});
+
+Route::prefix('customer')->middleware(['auth', 'EnsureUserRole:customer'])->name('customer.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('customer.dashboard');
+    })->name('dashboard');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

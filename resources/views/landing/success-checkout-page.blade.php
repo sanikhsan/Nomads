@@ -1,5 +1,5 @@
 @extends('landing.layouts.app')
-@section('title', 'Checkout Success')
+@section('title', '- Checkout Success')
 
 @section('landing-section')
 <div class="section-success d-flex align-items-center">

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>{{ config('app.name', 'Nomads') }}</title>
+    <title>{{ config('app.name', 'Nomads') }} @yield('title')</title>
     <link
       rel="stylesheet"
       href="{{asset('landing/libraries/bootstrap/css/bootstrap.css')}}"
@@ -18,8 +18,7 @@
       href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="{{asset('landing/libraries/xzoom/dist/xzoom.css')}}" />
-    <link rel="stylesheet" href="{{asset('landing/libraries/gijgo/css/gijgo.min.css')}}" />
+    @stack('addon-style')
   </head>
   <body>
     <!-- Semantic elements -->
@@ -46,26 +45,6 @@
     <script src="{{asset('landing/libraries/retina/retina.js')}}"></script>
     <script src="{{asset('landing/libraries/jquery/jquery-3.4.1.min.js')}}"></script>
     <script src="{{asset('landing/libraries/bootstrap/js/bootstrap.js')}}"></script>
-    @if (!request()->routeIs('landing'))
-        <script src="{{asset('landing/libraries/xzoom/dist/xzoom.min.js')}}"></script>
-        <script src="{{asset('landing/libraries/gijgo/js/gijgo.min.js')}}"></script>
-        <script>
-        $(document).ready(function() {
-            $('.xzoom, .xzoom-gallery').xzoom({
-            zoomWidth: 500,
-            title: false,
-            tint: '#333',
-            Xoffset: 15
-            });
-
-            $('.datepicker').datepicker({
-            uiLibrary: 'bootstrap4',
-            icons: {
-                rightIcon: '<img src="{{asset('landing/images/ic_doe.png')}}" alt="" />'
-            }
-            });
-        });
-        </script>
-    @endif
+    @stack('addon-script')
   </body>
 </html>

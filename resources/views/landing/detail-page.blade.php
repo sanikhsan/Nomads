@@ -1,5 +1,7 @@
 @extends('landing.layouts.app')
 
+@section('title', '- Detail Wisata')
+
 @section('landing-section')
 <section class="section-details-header"></section>
 <section class="section-details-content">
@@ -160,3 +162,21 @@
   </div>
 </section>
 @endsection
+
+@push('addon-style')
+<link rel="stylesheet" href="{{asset('landing/libraries/xzoom/dist/xzoom.css')}}" />
+@endpush
+
+@push('addon-script')
+  <script src="{{asset('landing/libraries/xzoom/dist/xzoom.min.js')}}"></script>
+  <script>
+  $(document).ready(function() {
+      $('.xzoom, .xzoom-gallery').xzoom({
+      zoomWidth: 500,
+      title: false,
+      tint: '#333',
+      Xoffset: 15
+      });
+  });
+  </script>
+@endpush

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'Customer Dashboard')
 
 @section('admin-content')
 <div class="page-heading">
