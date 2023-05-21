@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
+use App\Http\Controllers\Admin\TravelPackageController;
 use App\Http\Controllers\EnsureRolesController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RolesController;
 use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Support\Facades\Route;
 
@@ -35,10 +36,9 @@ Route::get('/success', function () {
     return view('landing.success-checkout-page');
 })->name('success');
 
-Route::prefix('admin')->middleware(['auth', 'EnsureUserRole:admin'])->name('admin.')->group(function () {
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+Route::prefix('admin')->middleware(['auth', 'verified', 'EnsureUserRole:admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminDashboard::class, 'index'])->name('dashboard');
+    Route::resource('travels', TravelPackageController::class);
 });
 
 Route::prefix('customer')->middleware(['auth', 'EnsureUserRole:customer'])->name('customer.')->group(function () {

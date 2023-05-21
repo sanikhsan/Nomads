@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('admin/css/bootstrap.css')}}">
     
-    <link rel="stylesheet" href="{{asset('admin/vendors/iconly/bold.css')}}">
+    @stack('addons-style')
 
     <link rel="stylesheet" href="{{asset('admin/vendors/perfect-scrollbar/perfect-scrollbar.css')}}">
     <link rel="stylesheet" href="{{asset('admin/vendors/bootstrap-icons/bootstrap-icons.css')}}">
@@ -38,7 +38,7 @@
                         <p>2023 &copy; Nomads</p>
                     </div>
                     <div class="float-end">
-                        <p> Admin Dashboard <span class="text-danger"><i class="bi bi-heart"></i></span><a
+                        <p> Admin Dashboard <span class="text-danger">-</i></span><a
                                 href="{{url('/')}}"> Nomads</a></p>
                     </div>
                 </div>
@@ -48,8 +48,7 @@
     <script src="{{asset('admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
     <script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
     
-    <script src="{{asset('admin/vendors/apexcharts/apexcharts.js')}}"></script>
-    <script src="{{asset('admin/js/pages/dashboard.js')}}"></script>
+    @stack('addons-script')
 
     <script src="{{asset('admin/js/mazer.js')}}"></script>
 </body>

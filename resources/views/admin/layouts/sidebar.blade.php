@@ -16,8 +16,8 @@
                 <li class="sidebar-title">Menu</li>
                 
                 <li
-                    class="sidebar-item active ">
-                    <a href="index.html" class='sidebar-link'>
+                    class="sidebar-item {{request()->routeIs('admin.dashboard') ? 'active' : ''}}">
+                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
@@ -25,7 +25,7 @@
 
                 <li
                     class="sidebar-item">
-                    <a href="application-gallery.html" class='sidebar-link'>
+                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-image-fill"></i>
                         <span>Gallery</span>
                     </a>
@@ -33,15 +33,15 @@
 
                 <li
                     class="sidebar-item">
-                    <a href="application-checkout.html" class='sidebar-link'>
+                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-basket-fill"></i>
                         <span>Transaksi</span>
                     </a>
                 </li>
                 
                 <li
-                    class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    class="sidebar-item {{request()->routeIs('admin.travels*') ? 'active' : ''}}">
+                    <a href="{{route('admin.travels.index')}}" class='sidebar-link'>
                         <i class="bi bi-map-fill"></i>
                         <span>Travel</span>
                     </a>
@@ -51,7 +51,7 @@
 
                 <li
                     class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
                         <i class="bi bi-person-badge-fill"></i>
                         <span>Profile</span>
                     </a>
