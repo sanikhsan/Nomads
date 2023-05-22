@@ -1,5 +1,5 @@
-<div class="container">
-    <nav class="row navbar navbar-expand-lg navbar-light bg-white">
+<div class="container" style="margin-bottom: 60px">
+    <nav class="row navbar navbar-expand-lg navbar-light bg-white fixed-top" style="margin: 0px 90px 90px 90px;">
       <a class="navbar-brand" href="{{route('landing')}}">
         <img src="{{asset('landing/images/logo.png')}}" alt="" />
       </a>
@@ -16,12 +16,12 @@
       <div class="collapse navbar-collapse" id="navb">
         <ul class="navbar-nav ml-auto mr-3">
           <li class="nav-item mx-md-2">
-            <a class="nav-link active" href="{{route('landing')}}">Home</a>
+            <a class="nav-link active" href="#home">Home</a>
           </li>
           <li class="nav-item mx-md-2">
-            <a class="nav-link" href="#">Paket Travel</a>
+            <a class="nav-link" href="#paket-travel">Paket Travel</a>
           </li>
-          <li class="nav-item dropdown">
+          {{-- <li class="nav-item dropdown">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -35,20 +35,20 @@
               <a class="dropdown-item" href="#">Link 2</a>
               <a class="dropdown-item" href="#">Link 3</a>
             </div>
-          </li>
+          </li> --}}
           <li class="nav-item mx-md-2">
-            <a class="nav-link" href="#">Testimonial</a>
+            <a class="nav-link" href="#testimonial">Testimonial</a>
           </li>
         </ul>
 
         <!-- Mobile button -->
-        <form class="form-inline d-sm-block d-md-none">
+        <form action="{{route('login')}}" class="form-inline d-sm-block d-md-none">
           <button class="btn btn-login my-2 my-sm-0">
             Masuk
           </button>
         </form>
         <!-- Desktop Button -->
-        <form class="form-inline my-2 my-lg-0 d-none d-md-block">
+        <form action="{{route('login')}}" class="form-inline my-2 my-lg-0 d-none d-md-block">
           <button class="btn btn-login btn-navbar-right my-2 my-sm-0 px-4">
             Masuk
           </button>

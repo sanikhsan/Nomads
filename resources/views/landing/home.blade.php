@@ -21,7 +21,7 @@
     </div>
   </section>
 </div>
-<section class="section-popular" id="popular">
+<section class="section-popular" id="paket-travel">
   <div class="container">
     <div class="row">
       <div class="col text-center section-popular-heading">
@@ -114,7 +114,7 @@
     </div>
   </div>
 </section>
-<section class="section-testimonials-heading" id="testimonialsHeading">
+<section class="section-testimonials-heading" id="testimonial">
   <div class="container">
     <div class="row">
       <div class="col text-center">

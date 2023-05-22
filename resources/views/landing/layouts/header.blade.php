@@ -1,4 +1,4 @@
-<header class="text-center">
+<header class="text-center" id="home">
     <h1>
       Explore The Beautiful World
       <br />
