@@ -26,6 +26,12 @@
                             <h5 class="pt-2">Gallery</h5>
                         </div>
                     </div>
+                    @if (Session(null))
+                    <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                        <strong> Catatan!</strong> Upload Gambar dengan mode Landscape dan maksimal 5 (Lima) Gambar untuk setiap Paket Travel!
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <div class="card-body">
                         <div class="row gallery" data-bs-toggle="modal" data-bs-target="#galleryModal">
                             @forelse ($galleries as $key => $gallery)
@@ -46,7 +52,7 @@
 </div>
 
 <div class="modal fade" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="galleryModalTitle">Gallery Preview</h5>

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('landing.home');
+    return view('landing.index');
 })->name('landing');
 
 Route::get('/roles', [EnsureRolesController::class, 'dashboard'])->middleware('auth');

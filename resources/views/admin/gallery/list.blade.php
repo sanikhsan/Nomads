@@ -22,6 +22,12 @@
             <div class="card-header">
                 <h5 class="card-title">Gallery List</h5>
             </div>
+            @if (Session(null))
+            <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
+                <strong> Catatan!</strong> Upload Gambar dengan mode Landscape dan maksimal 5 (Lima) Gambar untuk setiap Paket Travel!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
             @include('admin.components.alert')
             <div class="card-body">
                 <table class="table table-striped" id="GalleryList">
