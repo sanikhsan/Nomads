@@ -6,12 +6,12 @@
 
 <div class="page-heading">
     <div class="page-title">
-        <div class="row">
-            <div class="col-12 col-md-6 order-md-1 order-first mb-4">
+        <div class="row mb-4">
+            <div class="col-6 col-md-6 order-md-1 order-first">
                 <h3>Travel Packages</h3>
             </div>
-            <div class="col-12 col-md-6 order-md-2 order-last mb-4">
-                <nav class="breadcrumb-header float-start float-lg-end">
+            <div class="col-6 col-md-6 order-md-2 order-last">
+                <nav class="breadcrumb-header float-end">
                     <a href="{{route('admin.travels.create')}}" class="btn btn-primary"> Add New Travel</a>
                 </nav>
             </div>
@@ -20,7 +20,7 @@
     <section class="section">
         <div class="card">
             <div class="card-header">
-                Travel Packages List
+                <h5 class="card-title">Travel Packages List</h5>
             </div>
             @include('admin.components.alert')
             <div class="card-body">

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('package_galleries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('travel_packages_id');
-            $table->text('image');
+            $table->foreignId('travel_packages_id')->constrained()->cascadeOnDelete();
+            $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

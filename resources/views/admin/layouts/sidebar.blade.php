@@ -24,8 +24,8 @@
                 </li>
 
                 <li
-                    class="sidebar-item">
-                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
+                    class="sidebar-item {{request()->routeIs('admin.gallery*') ? 'active' : ''}}">
+                    <a href="{{route('admin.gallery.index')}}" class='sidebar-link'>
                         <i class="bi bi-image-fill"></i>
                         <span>Gallery</span>
                     </a>

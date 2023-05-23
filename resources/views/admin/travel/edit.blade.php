@@ -1,5 +1,5 @@
 @extends('admin.layouts.app')
-@section('title', 'Add Travel Package')
+@section('title', 'Edit Travel Package')
 
 @section('admin-content')
 <div class="page-heading">
