@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TravelPackage extends Model
@@ -23,4 +25,14 @@ class TravelPackage extends Model
         'type',
         'price'
     ];
+
+    // Relasi untuk mengembalikan satu gambar yang pertama
+    public function Gallery(): BelongsTo {
+        return $this->belongsTo(PackageGalleries::class, 'id');
+    }
+
+    // Relasi untuk mengembalikan banyak gambar
+    public function Galleries(): HasMany {
+        return $this->hasMany(PackageGalleries::class, 'travel_packages_id', 'id');
+    }
 }

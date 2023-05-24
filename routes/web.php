@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\TravelPackageController;
+use App\Http\Controllers\Customer\LandingPageController;
 use App\Http\Controllers\EnsureRolesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserRole;
@@ -19,19 +20,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing.index');
-})->name('landing');
+Route::get('/', [LandingPageController::class, 'index'])->name('landing');
+Route::get('/detail/{slug}', [LandingPageController::class, 'show'])->name('detail');
+
 
 Route::get('/roles', [EnsureRolesController::class, 'dashboard'])->middleware('auth');
 
 Route::get('/checkout', function () {
     return view('landing.checkout-page');
 })->name('checkout');
-
-Route::get('/detail', function () {
-    return view('landing.detail-page');
-})->name('detail');
 
 Route::get('/success', function () {
     return view('landing.success-checkout-page');

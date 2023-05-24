@@ -24,7 +24,7 @@
             </div>
             @if (Session(null))
             <div class="alert alert-info alert-dismissible fade show m-3" role="alert">
-                <strong> Catatan!</strong> Upload Gambar dengan mode Landscape dan maksimal 5 (Lima) Gambar untuk setiap Paket Travel!
+                <strong> Catatan!</strong> Upload Gambar mode Landscape dengan ukuran yang sama agar tampilan rapih!
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             @endif

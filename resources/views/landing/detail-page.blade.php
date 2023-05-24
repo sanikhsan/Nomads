@@ -23,70 +23,32 @@
     <div class="row">
       <div class="col-lg-8 pl-lg-0">
         <div class="card card-details">
-          <h1>Nusa Peninda</h1>
+          <h1>{{$travel->title}}</h1>
           <p>
-            Republic of Indonesia Raya
+            {{$travel->location}}
           </p>
           <div class="gallery">
             <div class="xzoom-container">
               <img
                 class="xzoom"
                 id="xzoom-default"
-                src="{{asset('landing/images/details-1.jpg')}}"
-                xoriginal="{{asset('landing/images/details-1.jpg')}}"
+                src="{{Storage::url($travel->Galleries->first()->image)}}"
+                xoriginal="{{Storage::url($travel->Galleries->first()->image)}}"
               />
               <div class="xzoom-thumbs">
-                <a href="{{asset('landing/images/details-1.jpg')}}"
+                @foreach ($travel->galleries as $gallery)
+                <a href="{{Storage::url($gallery->image)}}"
                   ><img
                     class="xzoom-gallery"
                     width="128"
-                    src="{{asset('landing/images/details-1.jpg')}}"
-                    xpreview="{{asset('landing/images/details-1.jpg')}}"
+                    src="{{Storage::url($gallery->image)}}"
+                    xpreview="{{Storage::url($gallery->image)}}"
                 /></a>
-                <a href="{{asset('landing/images/details-1.jpg')}}"
-                  ><img
-                    class="xzoom-gallery"
-                    width="128"
-                    src="{{asset('landing/images/details-1.jpg')}}"
-                    xpreview="{{asset('landing/images/details-1.jpg')}}"
-                /></a>
-                <a href="{{asset('landing/images/details-1.jpg')}}"
-                  ><img
-                    class="xzoom-gallery"
-                    width="128"
-                    src="{{asset('landing/images/details-1.jpg')}}"
-                    xpreview="{{asset('landing/images/details-1.jpg')}}"
-                /></a>
-                <a href="{{asset('landing/images/details-1.jpg')}}"
-                  ><img
-                    class="xzoom-gallery"
-                    width="128"
-                    src="{{asset('landing/images/details-1.jpg')}}"
-                    xpreview="{{asset('landing/images/details-1.jpg')}}"
-                /></a>
-                <a href="{{asset('landing/images/details-1.jpg')}}"
-                  ><img
-                    class="xzoom-gallery"
-                    width="128"
-                    src="{{asset('landing/images/details-1.jpg')}}"
-                    xpreview="{{asset('landing/images/details-1.jpg')}}"
-                /></a>
+                @endforeach
               </div>
             </div>
             <h2>Tentang Wisata</h2>
-            <p>
-              Nusa Penida is an island southeast of Indonesia’s island
-              Bali and a district of Klungkung Regency that includes the
-              neighbouring small island of Nusa Lembongan. The Badung
-              Strait separates the island and Bali. The interior of Nusa
-              Penida is hilly with a maximum altitude of 524 metres. It is
-              drier than the nearby island of Bali.
-            </p>
-            <p>
-              Bali and a district of Klungkung Regency that includes the
-              neighbouring small island of Nusa Lembongan. The Badung
-              Strait separates the island and Bali.
-            </p>
+            {!! $travel->about !!}
             <div class="features row pt-3">
               <div class="col-md-4">
                 <img
@@ -96,7 +58,7 @@
                 />
                 <div class="description">
                   <h3>Featured Ticket</h3>
-                  <p>Tari Kecak</p>
+                  <p>{{$travel->featured_event}}</p>
                 </div>
               </div>
               <div class="col-md-4 border-left">
@@ -107,7 +69,7 @@
                 />
                 <div class="description">
                   <h3>Language</h3>
-                  <p>Bahasa Indonesia</p>
+                  <p>{{$travel->language}}</p>
                 </div>
               </div>
               <div class="col-md-4 border-left">
@@ -118,7 +80,7 @@
                 />
                 <div class="description">
                   <h3>Foods</h3>
-                  <p>Local Foods</p>
+                  <p>{{$travel->foods}}</p>
                 </div>
               </div>
             </div>
@@ -136,24 +98,24 @@
           <table class="trip-informations">
             <tr>
               <th width="50%">Date of Departure</th>
-              <td width="50%" class="text-right">22 Aug, 2019</td>
+              <td width="50%" class="text-right">{{ \Carbon\Carbon::create($travel->departured_date)->format('F n, Y')}}</td>
             </tr>
             <tr>
               <th width="50%">Duration</th>
-              <td width="50%" class="text-right">4D 3N</td>
+              <td width="50%" class="text-right">{{$travel->duration}}</td>
             </tr>
             <tr>
               <th width="50%">Type</th>
-              <td width="50%" class="text-right">Open Trip</td>
+              <td width="50%" class="text-right">{{$travel->type}}</td>
             </tr>
             <tr>
               <th width="50%">Price</th>
-              <td width="50%" class="text-right">$80,00 / person</td>
+              <td width="50%" class="text-right">${{$travel->price}} / person</td>
             </tr>
           </table>
         </div>
         <div class="join-container">
-          <a href="checkout.html" class="btn btn-block btn-join-now mt-3 py-2"
+          <a href="{{route('checkout')}}" class="btn btn-block btn-join-now mt-3 py-2"
             >Join Now</a
           >
         </div>
