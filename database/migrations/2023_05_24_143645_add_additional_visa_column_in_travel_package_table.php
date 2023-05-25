@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('package_galleries', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('travel_packages_id')->constrained();
-            $table->text('image')->nullable();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::table('travel_packages', function (Blueprint $table) {
+            $table->string('additional_visa')->nullable()->after('price');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('package_galleries');
+        Schema::table('travel_packages', function (Blueprint $table) {
+            $table->dropColumn('additional_visa');
+        });
     }
 };

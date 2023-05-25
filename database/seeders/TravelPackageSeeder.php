@@ -42,7 +42,8 @@ class TravelPackageSeeder extends Seeder
                 'departured_date' => $departuredDate,
                 'duration' => '7 Days, 6 Night',
                 'type' => 'Open Trip',
-                'price' => '100'
+                'price' => '100',
+                'additional_visa' => '25'
             ],
             [
                 'title' => 'Trip To Nusa',
@@ -55,7 +56,8 @@ class TravelPackageSeeder extends Seeder
                 'departured_date' => $departuredDate,
                 'duration' => '7 Days, 6 Night',
                 'type' => 'Open Trip',
-                'price' => '110'
+                'price' => '110',
+                'additional_visa' => '25'
             ],
             [
                 'title' => 'Trip To Dubai',
@@ -68,7 +70,8 @@ class TravelPackageSeeder extends Seeder
                 'departured_date' => $departuredDate,
                 'duration' => '7 Days, 6 Night',
                 'type' => 'Open Trip',
-                'price' => '150'
+                'price' => '150',
+                'additional_visa' => '100'
             ],
             [
                 'title' => 'Trip To Bromo',
@@ -81,7 +84,8 @@ class TravelPackageSeeder extends Seeder
                 'departured_date' => $departuredDate,
                 'duration' => '7 Days, 6 Night',
                 'type' => 'Open Trip',
-                'price' => '130'
+                'price' => '130',
+                'additional_visa' => '20'
             ]
         ];
 

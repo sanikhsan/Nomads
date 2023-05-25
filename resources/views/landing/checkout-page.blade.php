@@ -28,7 +28,7 @@
               <div class="card card-details mb-3">
                 <h1>Who is Going?</h1>
                 <p>
-                  Trip to Ubud, Bali, Indonesia
+                  {{$travel->TrxTravel->title}}, {{$travel->TrxTravel->location}}
                 </p>
                 <div class="attendee">
                   <table class="table table-responsive-sm text-center">
@@ -43,86 +43,85 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <img
-                            src="{{asset('landing/images/avatar-4.png')}}"
-                            alt=""
-                            height="60"
-                          />
-                        </td>
-                        <td class="align-middle">Angga Risky</td>
-                        <td class="align-middle">CN</td>
-                        <td class="align-middle">N/A</td>
-                        <td class="align-middle">Active</td>
-                        <td class="align-middle">
-                          <a href="#">
-                            <img src="{{asset('landing/images/ic_remove.png')}}" alt="" />
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <img
-                            src="{{asset('landing/images/avatar-5.png')}}"
-                            alt=""
-                            height="60"
-                          />
-                        </td>
-                        <td class="align-middle">Galih Pratama</td>
-                        <td class="align-middle">SG</td>
-                        <td class="align-middle">30 Days</td>
-                        <td class="align-middle">Active</td>
-                        <td class="align-middle">
-                          <a href="#">
-                            <img src="{{asset('landing/images/ic_remove.png')}}" alt="" />
-                          </a>
-                        </td>
-                      </tr>
+                      @forelse ($travel->TrxDetail as $detail)
+                        <tr>
+                          <td>
+                            <img
+                              src="https://ui-avatars.com/api/?name={{$detail->username}}"
+                              alt=""
+                              height="60"
+                              style="border-radius: 50%"
+                            />
+                          </td>
+                          <td class="align-middle">{{$detail->username}}</td>
+                          <td class="align-middle">{{$detail->nationality}}</td>
+                          <td class="align-middle">{{$detail->is_visa == 1 ? 'YES' : 'NO'}}</td>
+                          <td class="align-middle">{{$detail->doe_passport <= Carbon\Carbon::now() ? 'Expired' : 'Active'}}</td>
+                          <td class="align-middle">
+                            <a href="{{route('customer.remove_member', $detail->id)}}">
+                              <img src="{{asset('landing/images/ic_remove.png')}}" alt="Delete Member" />
+                            </a>
+                          </td>
+                        </tr>
+                      @empty
+                        <tr>
+                          <td class="text-center" colspan="6">
+                            <h5>No one want to Trip?</h5>
+                          </td>
+                        </tr>
+                      @endforelse
                     </tbody>
                   </table>
                 </div>
                 <div class="member mt-3">
                   <h2>Add Member</h2>
-                  <form class="form-inline">
-                    <label class="sr-only" for="inputUsername">Name</label>
-                    <input
-                      type="text"
-                      class="form-control mb-2 mr-sm-2"
-                      id="inputUsername"
-                      placeholder="Username"
-                    />
+                  <form class="form-inline" action="{{route('customer.add_member', $travel->id)}}" method="POST">
+                    @csrf
+                    <label class="sr-only" for="inputUsername">Username</label>
+                        <input
+                          type="text"
+                          class="form-control mb-2 mr-sm-2"
+                          id="inputUsername"
+                          name="username"
+                          placeholder="Username"
+                          required
+                        />
+                        <input
+                          type="text"
+                          class="form-control mb-2 mr-sm-2"
+                          id="inputUsername"
+                          placeholder="NA"
+                          style="width: 50px"
+                          name="nationality"
+                          maxlength="3"
+                          required
+                        />
+                        <select
+                          class="custom-select mb-2 mr-sm-2"
+                          id="inlineFormCustomSelectPref"
+                          name="is_visa"
+                          required
+                        >
+                          <option value="0">N/A</option>
+                          <option value="1" selected>VISA</option>
+                        </select>
 
-                    <label
-                      class="sr-only"
-                      class="mr-2"
-                      for="inlineFormCustomSelectPref"
-                      >Preference</label
-                    >
-                    <select
-                      class="custom-select mb-2 mr-sm-2"
-                      id="inlineFormCustomSelectPref"
-                    >
-                      <option selected value="">VISA</option>
-                      <option value="2">30 Days</option>
-                      <option value="3">N/A</option>
-                    </select>
-
-                    <label class="sr-only" for="doePassport"
-                      >DOE Passport</label
-                    >
-                    <div class="input-group mb-2 mr-sm-2">
-                      <input
-                        type="text"
-                        class="form-control datepicker"
-                        id="doePassport"
-                        placeholder="DOE Passport"
-                      />
-                    </div>
-
-                    <button type="submit" class="btn btn-add-now mb-2 px-4">
-                      Add Now
-                    </button>
+                        <label class="sr-only" for="doePassport"
+                          >DOE Passport</label
+                        >
+                        <div class="input-group mb-2 mr-sm-2">
+                          <input
+                            type="text"
+                            class="form-control datepicker"
+                            id="doePassport"
+                            placeholder="DOE Passport"
+                            name="doe_passport"
+                            required
+                          />
+                        </div>
+                        <button type="submit" class="btn btn-add-now mb-2 px-4 float-right">
+                          Add Now
+                        </button>
                   </form>
                   <h3 class="mt-2 mb-0">Note</h3>
                   <p class="disclaimer mb-0">
@@ -138,25 +137,25 @@
                 <table class="trip-informations">
                   <tr>
                     <th width="50%">Members</th>
-                    <td width="50%" class="text-right">2 person</td>
+                    <td width="50%" class="text-right">{{$travel->TrxDetail->count()}}</td>
                   </tr>
                   <tr>
                     <th width="50%">Additional Visa</th>
-                    <td width="50%" class="text-right">$ 190,00</td>
+                    <td width="50%" class="text-right">$ {{$travel->additional_visa}},00</td>
                   </tr>
                   <tr>
                     <th width="50%">Trip Price</th>
-                    <td width="50%" class="text-right">$ 80,00 / person</td>
+                    <td width="50%" class="text-right">$ {{$travel->TrxTravel->price}},00 / person</td>
                   </tr>
                   <tr>
                     <th width="50%">Sub Total</th>
-                    <td width="50%" class="text-right">$ 280,00</td>
+                    <td width="50%" class="text-right">$ {{$travel->transaction_total}},00</td>
                   </tr>
                   <tr>
                     <th width="50%">Total (+Unique)</th>
                     <td width="50%" class="text-right text-total">
-                      <span class="text-blue">$ 279,</span
-                      ><span class="text-orange">33</span>
+                      <span class="text-blue">$ {{$travel->transaction_total}},</span
+                      ><span class="text-orange">{{rand(1, 99)}}</span>
                     </td>
                   </tr>
                 </table>
@@ -204,13 +203,13 @@
               </div>
               <div class="join-container">
                 <a
-                  href="success.html"
+                  href="{{route('customer.checkout-success', $travel->id)}}"
                   class="btn btn-block btn-join-now mt-3 py-2"
                   >I Have Made Payment</a
                 >
               </div>
               <div class="text-center mt-3">
-                <a href="#" class="text-muted">Cancel Booking</a>
+                <a href="{{route('customer.checkout-cancel', $travel->id)}}" class="text-muted">Cancel Booking</a>
               </div>
             </div>
           </div>
@@ -227,6 +226,7 @@
 <script>
 $(document).ready(function() {
   $('.datepicker').datepicker({
+  format: 'yyyy-mm-dd',
   uiLibrary: 'bootstrap4',
   icons: {
       rightIcon: '<img src="{{asset('landing/images/ic_doe.png')}}" alt="" />'

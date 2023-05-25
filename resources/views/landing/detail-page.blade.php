@@ -109,15 +109,22 @@
               <td width="50%" class="text-right">{{$travel->type}}</td>
             </tr>
             <tr>
+              <th width="50%">Additional Visa</th>
+              <td width="50%" class="text-right">${{$travel->additional_visa}} / person</td>
+            </tr>
+            <tr>
               <th width="50%">Price</th>
               <td width="50%" class="text-right">${{$travel->price}} / person</td>
             </tr>
           </table>
         </div>
         <div class="join-container">
-          <a href="{{route('checkout')}}" class="btn btn-block btn-join-now mt-3 py-2"
-            >Join Now</a
-          >
+          <form action="{{route('customer.in_cart', $travel->id)}}" method="POST">
+            @csrf
+            <button class="btn btn-block btn-join-now mt-3 py-2">
+              Join Now
+            </button>
+          </form>
         </div>
       </div>
     </div>

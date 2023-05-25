@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('travel_packages_id');
-            $table->bigInteger('users_id')->nullable();
+            $table->foreignId('travel_packages_id')->constrained();
+            $table->foreignId('users_id')->nullable()->constrained();
             $table->integer('additional_visa');
             $table->integer('transaction_total');
             $table->string('transaction_status');
