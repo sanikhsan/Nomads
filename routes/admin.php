@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\TravelPackageController;
 use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'EnsureUserRole:admin'])
     Route::resources([
         'travels' => TravelPackageController::class,
         'gallery' => GalleryController::class,
+        'transaction' => TransactionController::class
     ]);
     
 });

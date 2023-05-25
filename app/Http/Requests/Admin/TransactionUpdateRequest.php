@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionUpdateRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class TransactionUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check() && Auth::user()->roles == 'ADMIN';
     }
 
     /**
@@ -22,7 +23,7 @@ class TransactionUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'transaction_status' => 'string|required|in:IN_CART,PENDING,SUCCESS,CANCELED,FAILED'
         ];
     }
 }

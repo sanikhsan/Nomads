@@ -32,8 +32,8 @@
                 </li>
 
                 <li
-                    class="sidebar-item">
-                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
+                    class="sidebar-item {{request()->routeIs('admin.transaction*') ? 'active' : ''}}">
+                    <a href="{{route('admin.transaction.index')}}" class='sidebar-link'>
                         <i class="bi bi-basket-fill"></i>
                         <span>Transaksi</span>
                     </a>

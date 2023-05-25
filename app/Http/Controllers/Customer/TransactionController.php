@@ -131,7 +131,7 @@ class TransactionController extends Controller
     public function cancel(Request $request, $id)
     {
         $transaction = Transaction::findOrFail($id);
-        $transaction->transaction_status = 'CANCEL';
+        $transaction->transaction_status = 'CANCELED';
         $transaction->save();
 
         return view('landing.cancel-checkout-page');
