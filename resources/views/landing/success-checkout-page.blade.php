@@ -7,12 +7,12 @@
       <img src="{{ asset('landing/images/ic_mail.png') }}" alt="" />
       <h1>Yay! Success</h1>
       <p>
-        We’ve sent you email for trip instruction
+        Berhasil melakukan Checkout!
         <br />
-        please read it as well
+        Silahkan menuju dashboard dan lakukan Pembayaran, Terima Kasih!
       </p>
-      <a href="{{ route('landing') }}" class="btn btn-home-page mt-3 px-5">
-        Home Page
+      <a href="{{ route('customer.dashboard') }}" class="btn btn-home-page mt-3 px-5">
+        Dashboard Page
       </a>
     </div>
 </div>

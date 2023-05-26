@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Requests\Admin;
+namespace App\Http\Requests\Customer;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class TransactionUpdateRequest extends FormRequest
+class UploadTransactionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return Auth::check() && Auth::user()->roles == 'ADMIN';
+        return Auth::check() && Auth::user()->roles == 'CUSTOMER';
     }
 
     /**
@@ -23,7 +23,8 @@ class TransactionUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'transaction_status' => 'string|required|in:IN_CART,PENDING,PAID,CONFIRMED,CANCELED,FAILED'
+            'travel_packages_id' => 'required|exists:travel_packages,id',
+            'image' => 'required|string'
         ];
     }
 }

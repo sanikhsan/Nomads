@@ -12,12 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
-
-    public function test()
-    {
-        return Transaction::with(['TrxDetail', 'TrxUser', 'TrxTravel'])->get();
-    }
-
     public function in_cart(Request $request, $id)
     {
         // Mengambil Data Travel Package dari parameter id

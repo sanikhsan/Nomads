@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/roles', [EnsureRolesController::class, 'dashboard'])->middleware('auth');
+Route::get('/roles', [EnsureRolesController::class, 'dashboard'])->middleware('auth')->name('dashboard');
 
 Route::get('/', [LandingPageController::class, 'index'])->name('landing');
 Route::get('/detail/{slug}', [LandingPageController::class, 'show'])->name('detail');

@@ -39,6 +39,11 @@
           <li class="nav-item mx-md-2">
             <a class="nav-link" href="#testimonial">Testimonial</a>
           </li>
+          @if (Auth::check())
+          <li class="nav-item mx-md-2">
+            <a class="nav-link" href="{{route('dashboard')}}">Dashboard</a>
+          </li>
+          @endif
         </ul>
         @if (Auth::check())
           <!-- Mobile button -->

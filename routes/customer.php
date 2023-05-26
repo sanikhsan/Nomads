@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Customer\DashboardController;
+use App\Http\Controllers\Customer\ProfileController;
 use App\Http\Controllers\Customer\TransactionController;
 use App\Http\Middleware\EnsureUserRole;
 use Illuminate\Support\Facades\Route;
@@ -10,13 +12,21 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/test', [TransactionController::class, 'test']);
-
 Route::prefix('customer')->middleware(['auth', 'verified', 'EnsureUserRole:customer'])->name('customer.')->group(function () {
     // Route Dashboard Customer
-    Route::get('/dashboard', function () {
-        return view('customer.dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::get('/password', [ProfileController::class, 'password'])->name('password');
+    Route::post('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
+
+    // Route Upload Bukti Transaksi
+    Route::get('transaction/{transaction}', [DashboardController::class, 'show'])->name('order');
+    Route::post('transaction/update/{transaction}', [DashboardController::class, 'update'])->name('transaction.update');
+    Route::post('transaction/cancel', [DashboardController::class, 'cancel'])->name('transaction.cancel');
+    // Filepond
+    Route::post('transaction/upload', [DashboardController::class, 'filepond'])->name('transaction.upload');
+    Route::delete('transaction/delete', [DashboardController::class, 'delete'])->name('transaction.delete');
 
     // Route Transcation LandingPage
     Route::get('checkout/{id}', [TransactionController::class, 'cart_review'])->name('cart_review');
