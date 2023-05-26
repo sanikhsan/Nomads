@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\UploadTransactionRequest;
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -15,11 +16,18 @@ class DashboardController extends Controller
     public function index()
     {
         return view('customer.dashboard', [
-            'transactions' => Transaction::with('TrxTravel')->where('users_id', Auth::user()->id)->get()
+            'transactions' => Transaction::with(['TrxTravel', 'TrxDetail'])->where('users_id', Auth::user()->id)->get()
         ]);
     }
 
-    public function show(Transaction $transaction)
+    public function detail(Transaction $transaction)
+    {
+        return view('customer.detail', [
+            'transaction' => $transaction
+        ]);
+    }
+
+    public function payment(Transaction $transaction)
     {
         // $transaction = Transaction::with('TrxTravel')->where('users_id', Auth::user()->id)->findOrFail($id);
 
@@ -43,9 +51,12 @@ class DashboardController extends Controller
         return redirect(route('customer.dashboard'))->with('success-edit', "Berhasil Upload Bukti Transaksi!");
     }
 
-    public function cancel()
+    public function cancel(Transaction $transaction)
     {
-        // 
+        $transaction->transaction_status = 'CANCELED';
+        $transaction->save();
+
+        return redirect(route('customer.dashboard'))->with('success-delete', "Pesanan kamu Berhasil dibatalkan!");
     }
 
     // *

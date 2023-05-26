@@ -47,6 +47,14 @@
                     </a>
                 </li>
 
+                <li
+                    class="sidebar-item {{request()->routeIs('admin.rekening*') ? 'active' : ''}}">
+                    <a href="{{route('admin.rekening.index')}}" class='sidebar-link'>
+                        <i class="bi bi-wallet2"></i>
+                        <span>Rekening</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-title">Akun</li>
 
                 <li

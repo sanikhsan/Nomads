@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboard;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RekeningController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\TravelPackageController;
 use App\Http\Middleware\EnsureUserRole;
@@ -30,7 +31,8 @@ Route::prefix('admin')->middleware(['auth', 'verified', 'EnsureUserRole:admin'])
     Route::resources([
         'travels' => TravelPackageController::class,
         'gallery' => GalleryController::class,
-        'transaction' => TransactionController::class
+        'transaction' => TransactionController::class,
+        'rekening' => RekeningController::class
     ]);
     
 });

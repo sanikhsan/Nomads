@@ -21,9 +21,10 @@ Route::prefix('customer')->middleware(['auth', 'verified', 'EnsureUserRole:custo
     Route::post('/password', [ProfileController::class, 'updatePassword'])->name('password.update');
 
     // Route Upload Bukti Transaksi
-    Route::get('transaction/{transaction}', [DashboardController::class, 'show'])->name('order');
+    Route::get('transaction/{transaction}', [DashboardController::class, 'payment'])->name('transaction.payment');
+    Route::get('transaction/detail/{transaction}', [DashboardController::class, 'detail'])->name('transaction.detail');
     Route::post('transaction/update/{transaction}', [DashboardController::class, 'update'])->name('transaction.update');
-    Route::post('transaction/cancel', [DashboardController::class, 'cancel'])->name('transaction.cancel');
+    Route::get('transaction/cancel/{transaction}', [DashboardController::class, 'cancel'])->name('transaction.cancel');
     // Filepond
     Route::post('transaction/upload', [DashboardController::class, 'filepond'])->name('transaction.upload');
     Route::delete('transaction/delete', [DashboardController::class, 'delete'])->name('transaction.delete');

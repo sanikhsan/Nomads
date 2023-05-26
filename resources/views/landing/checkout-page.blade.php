@@ -58,9 +58,13 @@
                           <td class="align-middle">{{$detail->is_visa == 1 ? 'YES' : 'NO'}}</td>
                           <td class="align-middle">{{$detail->doe_passport <= Carbon\Carbon::now() ? 'Expired' : 'Active'}}</td>
                           <td class="align-middle">
+                            @if ($detail->username == Auth::user()->username)
+                                
+                            @else
                             <a href="{{route('customer.remove_member', $detail->id)}}">
                               <img src="{{asset('landing/images/ic_remove.png')}}" alt="Delete Member" />
                             </a>
+                            @endif
                           </td>
                         </tr>
                       @empty
@@ -167,6 +171,7 @@
                   trip
                 </p>
                 <div class="bank">
+                  @foreach ($rekenings as $rekening)
                   <div class="bank-item pb-3">
                     <img
                       src="{{asset('landing/images/ic_bank.png')}}"
@@ -174,31 +179,16 @@
                       class="bank-image"
                     />
                     <div class="description">
-                      <h3>PT Nomads ID</h3>
+                      <h3>{{$rekening->nama_rekening}}</h3>
                       <p>
-                        0881 8829 8800
+                        {{$rekening->nomor_rekening}}
                         <br />
-                        Bank Central Asia
+                        {{$rekening->nama_bank}}
                       </p>
                     </div>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="bank-item">
-                    <img
-                      src="{{asset('landing/images/ic_bank.png')}}"
-                      alt=""
-                      class="bank-image"
-                    />
-                    <div class="description">
-                      <h3>PT Nomads ID</h3>
-                      <p>
-                        0899 8501 7888
-                        <br />
-                        Bank HSBC
-                      </p>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
+                  @endforeach
                 </div>
               </div>
               <div class="join-container">

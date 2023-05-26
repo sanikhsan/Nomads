@@ -41,8 +41,8 @@
                         <select class="form-select" name="transaction_status" id="update-transaction" required>
                             <option selected value="" disabled>{{$transaction->transaction_status}}</option>
                             <option value="PENDING">PENDING</option>
-                            <option value="CANCELED">CANCEL</option>
-                            <option value="SUCCESS">CONFIRM</option>
+                            <option value="FAILED">REJECT</option>
+                            <option value="CONFIRMED">CONFIRM</option>
                         </select>
                         <button type="submit" class="btn btn-primary my-3 float-end">SAVE</button>
                     </form>

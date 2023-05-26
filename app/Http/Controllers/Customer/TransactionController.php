@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Customer\TransactionRequest;
+use App\Models\Rekening;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\TravelPackage;
@@ -52,7 +53,8 @@ class TransactionController extends Controller
     public function cart_review(Request $request, $id)
     {
         return view('landing.checkout-page', [
-            'travel' => Transaction::with(['TrxDetail', 'TrxUser', 'TrxTravel'])->findOrFail($id)
+            'travel' => Transaction::with(['TrxDetail', 'TrxUser', 'TrxTravel'])->findOrFail($id),
+            'rekenings' => Rekening::get()
         ]);
     }
 
@@ -124,9 +126,12 @@ class TransactionController extends Controller
 
     public function cancel(Request $request, $id)
     {
+        $trxDetail = TransactionDetail::where('transactions_id', $id);
         $transaction = Transaction::findOrFail($id);
-        $transaction->transaction_status = 'CANCELED';
+        $transaction->transaction_status = 'FAILED';
         $transaction->save();
+        $trxDetail->delete();
+        $transaction->delete();
 
         return view('landing.cancel-checkout-page');
     }
