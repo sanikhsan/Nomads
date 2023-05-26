@@ -1,24 +1,23 @@
-@extends('customer.layouts.app')
+@extends('admin.layouts.app')
+@section('title', 'Update Password')
 
-@section('title', 'Customer Dashboard')
-
-@section('customer-content')
+@section('admin-content')
 <div class="page-heading">
     <div class="page-title">
         <div class="row mb-4">
             <div class="col-12 col-md-12 order-md-1 order-first">
-                <h3>Customer Password Configuration</h3>
+                <h3>Admin Password Configuration</h3>
             </div>
         </div>
     </div>
     <section class="section">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Customer Update Password</h5>
+                <h5 class="card-title">Admin Update Password</h5>
             </div>
-            @include('customer.components.alert')
+            @include('admin.components.alert')
             <div class="card-body">
-                <form action="{{route('customer.password.update')}}" method="POST">
+                <form action="{{route('admin.password.update')}}" method="POST">
                     @csrf
                     <div class="mb-3">
                       <label class="form-label">Current Password</label>

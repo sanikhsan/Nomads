@@ -22,6 +22,8 @@
                     </div>
                     <h1 class="auth-title">Sign Up</h1>
                     <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
+
+                    @include('customer.components.alert')
         
                     <form action="{{route('register')}}" method="POST">
                         @csrf
@@ -70,6 +72,7 @@
             </div>
         </div>    
     </div>
-</body>
 
+    <script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
+</body>
 </html>

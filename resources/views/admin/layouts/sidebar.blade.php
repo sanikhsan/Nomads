@@ -51,9 +51,17 @@
 
                 <li
                     class="sidebar-item">
-                    <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
+                    <a href="{{route('admin.profile')}}" class='sidebar-link'>
                         <i class="bi bi-person-badge-fill"></i>
                         <span>Profile</span>
+                    </a>
+                </li>
+
+                <li
+                    class="sidebar-item">
+                    <a href="{{route('admin.password')}}" class='sidebar-link'>
+                        <i class="bi bi-shield-lock-fill"></i>
+                        <span>Password</span>
                     </a>
                 </li>
                 

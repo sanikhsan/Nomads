@@ -21,6 +21,7 @@
             <div class="card-header">
                 <h5 class="card-title">Transaction List</h5>
             </div>
+            @include('customer.components.alert')
             <div class="card-body">
                 <table class="table table-striped" id="TravelPackage">
                     <thead>

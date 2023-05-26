@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,8 @@
                     </div>
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
+                    
+                    @include('customer.components.alert')
 
                     <form action="{{route('login')}}" method="POST">
                         @csrf
@@ -62,6 +64,7 @@
             </div>
         </div>
     </div>
-</body>
 
+    <script src="{{asset('admin/js/bootstrap.bundle.min.js')}}"></script>
+</body>
 </html>

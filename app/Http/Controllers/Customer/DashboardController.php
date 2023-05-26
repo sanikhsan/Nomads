@@ -40,7 +40,7 @@ class DashboardController extends Controller
         $data['transaction_status'] = 'PAID';
 
         $transaction->update($data);
-        return redirect(route('customer.dashboard'))->with('success', "Berhasil Upload Bukti Transaksi!");
+        return redirect(route('customer.dashboard'))->with('success-edit', "Berhasil Upload Bukti Transaksi!");
     }
 
     public function cancel()

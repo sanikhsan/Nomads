@@ -17,7 +17,8 @@ class Transaction extends Model
         'users_id',
         'additional_visa',
         'transaction_total',
-        'transaction_status'
+        'transaction_status',
+        'transaction_image'
     ];
     
     public function TrxTravel(): BelongsTo

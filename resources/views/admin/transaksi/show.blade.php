@@ -64,6 +64,10 @@
                               </table>
                         </td>
                       </tr>
+                      <tr>
+                        <th class="w-25" scope="row">Bukti Transfer</th>
+                        <td class="text-center"><img src="{{Storage::url($transaction->transaction_image)}}" alt="Bukti Transfer"></td>
+                      </tr>
                     </tbody>
                 </table>
             </div>
